@@ -1,0 +1,153 @@
+%
+% File ACL2016.tex
+%
+
+\documentclass[11pt]{article}
+\usepackage{acl2016}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\aclfinalcopy 
+
+\usepackage[authoryear]{natbib}
+\usepackage{url}
+
+\title{Gendered Patterns in Writing: A Computational Analysis of Linguistic Styles in Male and Female Authors}
+\author{Hiwa Moradi, S5183979}
+\date{13/01/2025}
+
+\begin{document}
+\maketitle
+
+%%% YOUR PART HERE
+\begin{abstract} 
+This paper analyzes gender-based linguistic style differences using a dataset of books written by both male and female authors represented in  Project Gutenberg. The linguistic features that are analysed are pronoun usage, sentiment polarity, dialogue proportion, and emotional language. The results point to obvious stylistic differences, including differences in description and emotional expressiveness. The study shows the importance of gender in forming linguistic variation and shows the value of computational methods in sociolinguistic analysis.
+
+\end{abstract}
+
+
+\section{Introduction}
+In recent years, computational sociolinguistics has gained attention on recognising patterns of language use across different social groups, showing how identity and social factors determine linguistic behaviour. Gender is one of the important sociocultural factors that have been associated with peculiar linguistic styles for a long time. Through computational methods, the present study will seek to systematise the investigation of gender-based differences in writing styles and provide insight on how linguistic expression differs between male and female authors.
+
+
+While much has been said about gender in the linguistic literature, there is little understanding of how stylistic differences appear in large, heterogeneous corpora of written text. Further, traditional sociolinguistic methods may overlook subtle patterns that are only evident through computational analysis. This study fills the gap by asking: Do male and female authors differ in their linguistic styles, and if so, how are these differences reflected in specific linguistic features such as pronoun use, adverb frequency, and sentiment polarity?
+
+
+We hypothesise that male and female authors will show measurable differences in their linguistic styles. Specifically:
+
+Female authors are likely to use more pronouns, reflecting a more relational and expressive style.
+Male authors may prefer descriptive precision and objectivity, using fewer pronouns.
+Female authors may also use more dialogue compared to male authors, reflecting a conversational style in their narratives.
+This hypothesis will be tested through computational analysis of texts from Project Gutenberg, focusing on linguistic features that reflect stylistic variation
+
+
+\section{Related Work} 
+The analysis of gendered linguistic differences has been a theme of considerable interest in sociolinguistics and computational linguistics. We will look at previous studies that have looked into the same subject, contextualise and relate how the other papers addressed the relationship between gender, writing style, and linguistic variation.
+
+A recent article by \cite{tsemach2021intersection}, entitled "The Intersection of Gender and Culture in Argumentative Writing", looks at the influence of gender on argumentative writing concerning certain specific cultural contexts. The paper reveals systematic gender-based linguistic patterns, where men are seen to favour assertive and factual styles, whereas women display a more relational and empathetic approach. This study does not disprove but confirms our hypothesis of gendered differences in expression and structure. However, our work further adds another range of linguistic features to be observed—including pronoun use—within a literary context, not argumentative. The article "Discourses of Difference? Examining Gender Differences in Linguistic Characteristics of Writing" by \cite{jones2007discourses} is precisely designed to focus on stylistic variations between male and female authors, covering word choice, sentence structure, and use of emotional language.
+
+Jones' results showed that female authors were more emotionally expressive and relational in their use of language, thus supporting the idea of an interpersonal and more narrative-driven style. This parallels our study's focus on the proportion of emotional language and dialogue, reinforcing expectations of stylistic variation between genders. \cite{reynolds2015gender}'s work, "Gender Differences in Academic Achievement: Is Writing an Exception to the Gender Similarities Hypothesis?", takes a broader perspective on gender and language by addressing the differences in academic writing performance.
+
+Although his focus is on academic achievement rather than on literary writing, the findings bear foundational evidence for the existence of gendered linguistic tendencies, further explored in our study. We extend this thread one step more and computationally explore to what degree this is true in books. We quantify how male and female authors tell stories and phrase themselves differently, stylistically speaking. All these previous studies emphasize the strong role played by gender in linguistic style, which gives us a reason to conduct our research. Taken together, these findings position our study within an increasing body of literature dedicated to probing the sociolinguistic underpinnings of gendered expression. Therefore, these formative studies have provided the theoretical and methodological foundations of our study. Building from the insights garnered, our study hopes to widen the knowledge of gendered linguistic patterns by bringing closer the traditional sociolinguistic approach and computational analysis. 
+
+
+\section{Data}
+This study takes a computational approach to analyse gender-based differences in linguistic styles. The methodology is divided into several steps: data selection, feature extraction, validation and cross-checking, and limitation and mitigation. These steps help with addressing the research hypothesis.
+
+The primary data for this research will be collected from Project Gutenberg, a publicly available digital library of literary texts. This platform provides access to a wide range of texts authored by men and women, covering various genres and time periods. The dataset consists of two books: 'Cranford' by \cite{Gaskell:1996:book} and 'A Room with a View' by \cite{Forster:2001:book}. The books are written in the late 90's and early 2000's. This way the use of the English language does not differ much. They are also both fiction, specifically novels. It is important to have a lot of similarities. Therefore the results will be more valid. 
+The way the data is collected is by searching for books from the Project Gutenberg that are the same genre and around the same time written, but the gender of the authors need to differ. The information about the books and authors are all written on the Project Gutenberg site.
+
+We downloaded the chosen books as a plain text, removed irrelevant content, such as information Project Gutenberg added extra and the content. 
+
+The independent variable in this study are the genders of the authors, either male or female. This data is seen on the Gutenberg.
+The dependent variable are the data we collected through the code we have written, which include personal pronouns (e.g., "I" "you," "he/she"), possessive pronouns ( e.g. "my", "your", "his"/"her") and dialogues used. The dialogues are recognized by the use of '“”'. We have replaced the curly quotes with '"' by typing 'sed -i 's/“/"/g' example.txt' in the terminal. We then counted the amount of straight quotes, divided it by two, so we have the amount of dialogues. 
+
+We ran the texts after they were edited trough a self-made python code, so the dependent variables could be counted. 
+
+\paragraph{Pre-processing} 
+To ensure the data of this study has as few as possible differences the genre of the chosen texts will be the same. This way, we avoid bias caused by genre-specific linguistic styles.  
+
+The dialogues are recognized by the use of '“”'. We have replaced the curly quotes with '"' by putting 'sed -i 's/“/"/g' "example".txt' in the terminal. We then counted the amount of straight quotes, divided it by two, so we have the amount of dialogues.
+
+
+Table~\ref{tbl:stats} provides a summary of the data that will be used in this study. 
+\begin{table}[hbtp]\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ & Man & Woman \\
+\hline
+Prs. pro & 6123 & 6089 \\
+Pos. pro & 1658 & 2134 \\
+Dialogue & 1035 & 343 \\
+\hline
+\end{tabular}
+\caption{Gathered data. 'Prs. pro' is personal pronouns. 'Pos. pro' is possessive pronoun.}
+\label{tbl:stats}
+\end{table}
+
+
+\section{Predicted Results}
+
+
+\begin{quote}
+    PE men and women shared similar argument stratagems with only two significant differences. More female writers related to family matters and raising children (9\%) than did men (1\%). The second difference was that men (38\%) used the first tense plural (‘We should’, ‘it is our duty’) more than did women (21\%). \cite{tsemach2021intersection}
+\end{quote}
+The data by Tsemach states that women write more emotionally than men.
+\begin{table}[hbtp]\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ & Men & Woman\\
+\hline
+Family & 1\% & 9\% \\
+Tense plural & 38\% & 21\% \\
+\hline
+\end{tabular}
+\caption{Percentages of people writing about family and using tense plural in Tsemach's study}
+\label{tbl:results}
+\end{table}
+
+
+\begin{quote}
+    In light of the limited differences found when comparing boys' and girls' writing in the whole sample, and given the common view (albeit more anecdotal than empirical) that boys may be better at writing non-fiction texts than girls, a further set of statistical analysis was undertaken for gender by text type. \cite{jones2007discourses}
+\end{quote}
+
+We see that the study done by Jones et al. states that boys are better at non-fiction.
+
+
+\begin{quote}
+    ... girls scored higher on spelling and written expression, with effect sizes
+inconsistent with the gender similarities hypothesis. The findings remained the same after controlling for cognitive ability. Girls outperform boys on tasks of writing. \cite{reynolds2015gender}
+\end{quote}
+Jones et al. talks about how girls scored higher on spelling and written expression than boys. Girls are more expressive, which means they are more emotional writers than boys.
+
+\section{Discussion} 
+Our own data challenges the notion that women are more emotionally expressive in their writing. On the contrary, the studies done by Tsemach, Jones and Reynolds do suggest women are more emotionally expressive in their writing. Instead, the analysis revealed that male authors, in this dataset, employed higher frequencies of personal pronouns, possessive pronouns, and dialogue.
+This would suggest that emotionality in writing depends less on gender and more on individual style, genre, or narrative focus. It also implies that societal assumptions about gender and emotionality may not correspond to actual linguistic behavior—at least not in this particular context.
+
+What is most striking about the study, however, is its reliance on personal pronouns, possessive pronouns, and dialogue as markers of emotionality; it has limitations. While representative of the relational, conversational language, those features do not exhaust the larger set containing the emotional expression in language. Much of expressiveness could also pour into other kinds of linguistic features, for example, polarity of sentiment, adjectival descriptive expressions, and metaphors; besides, their use may be easily modulated by genre and contextual factors in written texts. For instance, the higher proportion of dialogue for the male author may show a storytelling style rather than an emotive tone.
+
+Thus, the dataset may be extended to include texts from different genres, written at different times in history, to further emphasize these findings. Finally, many further important questions of how society's conception of gender-bias writing and perceiving emotive language are implied by the study itself.
+
+\section{Conclusion}
+This study aimed at the differences in linguistic styles between male and female authors by looking at personal pronouns, possessive pronouns, and dialogue as variables of emotionality and relational language. Results showed that the male authors in the dataset had higher frequencies than female authors for these features, pointing toward a more emotional/relational writing style. This result is the opposite of the related studies used, which consistently found women to be more emotionally expressive in writing.
+
+Some of the key limitations are the small sample size used in the study and the limited independent variables. With only two books to analyze, the results may reflect individual stylistic choices and may not necessarily represent gendered trends. Moreover, the features selected show only a partial view of emotional language. Future research should resolve these limitations by using larger corpora with a greater variety of texts and other linguistic markers, such as sentiment analysis and descriptive language.
+
+While this study has some limitations, it does bring out a valuable perspective on gendered linguistic differences and highlights the need for context-sensitive approaches in computational sociolinguistics. It opens the way to further exploration of how factors such as genre, cultural expectations, and individual authorial choices influence emotionality and style in writing.
+
+%%END YOUR PART
+
+
+
+\bibliographystyle{chicago}
+\bibliography{mybib.bib}
+\paragraph{Github} 
+https://github.com/Hiwaiiii/Introduction-to-Research-Methods
+\end{document}
+
+
+
